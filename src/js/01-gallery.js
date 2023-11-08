@@ -1,7 +1,7 @@
 import { galleryItems } from './gallery-items.js';
 
 const gallery = document.querySelector('.gallery');
-
+let thisImg;
 //Генерую зображення
 gallery.innerHTML = ImgItemsGenerate(galleryItems)
 
@@ -29,7 +29,8 @@ gallery.addEventListener('click', onGalleryClick)
 function onGalleryClick(evt) {
   evt.preventDefault();
   // console.log(evt.target.dataset);
-  basicLightboxImgCreate(evt.target.dataset.source).show();  
+  thisImg = basicLightboxImgCreate(evt.target.dataset.source);  
+  thisImg.show();
 }
 
 function basicLightboxImgCreate(src) {
@@ -43,9 +44,7 @@ document.addEventListener('keydown', (evt) => {
   if (evt.key === 'Escape') {
     const imgIsOpen = document.querySelector(".basicLightbox");
     if (imgIsOpen) {
-      imgIsOpen.outerHTML = "";
-      // imgIsOpen.classList.remove("basicLightbox--visible") <-- Цим методом залипає
-      // imgIsOpen.close();
+      thisImg.close();
     }
   }
 });

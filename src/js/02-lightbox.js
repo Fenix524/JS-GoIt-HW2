@@ -31,12 +31,3 @@ function ImgItemsGenerate(array) {
   }).join("")
 }
 
-
-galleryHtml.addEventListener('click', onGalleryClick)
-
-function onGalleryClick(evt) {
-  evt.preventDefault();  
-  gallery.open(evt.target);
-  
-}
-
